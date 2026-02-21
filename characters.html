@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>角色介绍 - Crazy Chicken 3D 游戏角色</title>
+  <meta name="description" content="了解Crazy Chicken 3D中的所有游戏角色！小鸡主角、敌人BOSS、道具角色一览。免费在线玩！">
+  <meta name="keywords" content="Crazy Chicken 3D角色, 游戏角色介绍, 小鸡游戏, 3D游戏角色, 网页游戏角色">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://crazychicken3d.xiea.dev/characters.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Crazy Chicken 3D 角色介绍",
+    "description": "了解游戏中所有可爱角色",
+    "url": "https://crazychicken3d.xiea.dev/characters.html"
+  }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', sans-serif;
+      background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+      min-height: 100vh;
+      color: #fff;
+    }
+    .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+    h1 { font-size: 2.5rem; margin-bottom: 10px; color: #ff9a56; text-align: center; }
+    .subtitle { text-align: center; color: #aaa; margin-bottom: 40px; }
+    .character-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+    .character-card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .character-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+    .char-icon { font-size: 4rem; margin-bottom: 15px; display: block; }
+    .char-name { font-size: 1.5rem; color: #ff9a56; margin-bottom: 10px; }
+    .char-desc { color: #ccc; font-size: 0.95rem; line-height: 1.6; }
+    .char-type { display: inline-block; background: #ff6b6b; padding: 5px 15px; border-radius: 15px; font-size: 0.8rem; margin-top: 15px; }
+    .type-hero { background: #4CAF50; }
+    .type-enemy { background: #f44336; }
+    .type-npc { background: #2196F3; }
+    .back-btn {
+      display: inline-block;
+      background: #ff9a56;
+      color: #0f0c29;
+      padding: 12px 30px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 40px;
+      transition: transform 0.3s;
+    }
+    .back-btn:hover { transform: scale(1.05); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🐔 游戏角色</h1>
+    <p class="subtitle">探索 Crazy Chicken 3D 的奇妙世界</p>
+    
+    <div class="character-grid">
+      <div class="character-card">
+        <span class="char-icon">🐣</span>
+        <h3 class="char-name">小鸡仔</h3>
+        <p class="char-desc">游戏主角，一只勇敢的小鸡。拥有灵活的移动能力和可爱的外表，是所有玩家的化身。</p>
+        <span class="char-type type-hero">主角</span>
+      </div>
+
+      <div class="character-card">
+        <span class="char-icon">🦊</span>
+        <h3 class="char-name">狐狸敌人</h3>
+        <p class="char-desc">森林中的狐狸企图抓住小鸡。速度快但警觉性低，是初期的练习对象。</p>
+        <span class="char-type type-enemy">敌人</span>
+      </div>
+
+      <div class="character-card">
+        <span class="char-icon">🦅</span>
+        <h3 class="char-name">老鹰BOSS</h3>
+        <p class="char-desc">游戏的终极BOSS，拥有强大的飞行能力和攻击技能。击败它即可通关！</p>
+        <span class="char-type type-enemy">BOSS</span>
+      </div>
+
+      <div class="character-card">
+        <span class="char-icon">🐰</span>
+        <h3 class="char-name">兔子NPC</h3>
+        <p class="char-desc">友善的兔子商人，可以购买道具和装备。完成支线任务还能获得稀有物品。</p>
+        <span class="char-type type-npc">商人</span>
+      </div>
+
+      <div class="character-card">
+        <span class="char-icon">🐸</span>
+        <h3 class="char-name">青蛙守卫</h3>
+        <p class="char-desc">守护池塘的青蛙，会使用水系技能。需要掌握时机才能击败。</p>
+        <span class="char-type type-enemy">敌人</span>
+      </div>
+
+      <div class="character-card">
+        <span class="char-icon">🦉</span>
+        <h3 class="char-name">智慧猫头鹰</h3>
+        <p class="char-desc">提供游戏提示和攻略建议的智者。可以在遇到困难时寻求帮助。</p>
+        <span class="char-type type-npc">导师</span>
+      </div>
+    </div>
+
+    <div style="text-align: center;">
+      <a href="/" class="back-btn">🏠 开始游戏</a>
+    </div>
+  </div>
+</body>
+</html>
