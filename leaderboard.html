@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crazy Chicken 3D 排行榜 - 游戏成绩排名</title>
+  <meta name="description" content="查看Crazy Chicken 3D游戏玩家排行榜。对比你的成绩与全国玩家，挑战最高分！免费在线3D游戏，立即开始挑战！">
+  <meta name="keywords" content="Crazy Chicken 3D 排行榜, 疯狂小鸡排行榜, 游戏排名, 玩家分数, 3D游戏高分, 网页游戏排行榜">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://crazychicken3d.xiea.dev/leaderboard.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "Crazy Chicken 3D 排行榜",
+    "description": "查看游戏玩家排行榜和最高分",
+    "url": "https://crazychicken3d.xiea.dev/leaderboard.html",
+    "genre": ["Action", "Adventure", "Casual"],
+    "platform": "Web Browser"
+  }
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', sans-serif;
+      background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .nav {
+      background: rgba(255,255,255,0.2);
+      padding: 15px;
+      text-align: center;
+      margin-bottom: 30px;
+      border-radius: 15px;
+    }
+    
+    .nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+    
+    .nav a:hover {
+      text-decoration: underline;
+    }
+    
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+    
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 8px;
+      font-size: 2rem;
+    }
+    
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 30px;
+    }
+    
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 25px;
+    }
+    
+    .tab {
+      flex: 1;
+      padding: 12px;
+      background: #f5f5f5;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .tab.active {
+      background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%);
+      color: white;
+    }
+    
+    .leaderboard-list {
+      list-style: none;
+    }
+    
+    .leaderboard-item {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid #eee;
+      transition: background 0.3s;
+    }
+    
+    .leaderboard-item:hover {
+      background: #f9f9f9;
+    }
+    
+    .leaderboard-item:last-child {
+      border-bottom: none;
+    }
+    
+    .rank {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+    
+    .rank.gold {
+      background: linear-gradient(135deg, #ffd700, #ffb800);
+      color: white;
+    }
+    
+    .rank.silver {
+      background: linear-gradient(135deg, #c0c0c0, #a0a0a0);
+      color: white;
+    }
+    
+    .rank.bronze {
+      background: linear-gradient(135deg, #cd7f32, #b06020);
+      color: white;
+    }
+    
+    .rank.normal {
+      background: #f0f0f0;
+      color: #666;
+    }
+    
+    .player-info {
+      flex: 1;
+    }
+    
+    .player-name {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: #333;
+    }
+    
+    .player-level {
+      color: #888;
+      font-size: 0.9rem;
+    }
+    
+    .player-score {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ff6b6b;
+    }
+    
+    .your-score {
+      background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    
+    .your-score-label {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+    
+    .your-score-value {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+    
+    .play-btn {
+      display: block;
+      width: fit-content;
+      margin: 30px auto 0;
+      background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%);
+      color: white;
+      padding: 15px 40px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    
+    .play-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="nav">
+      <a href="/guide.html">📖 攻略指南</a>
+      <a href="/characters.html">🐔 角色介绍</a>
+      <a href="/">🎮 开始游戏</a>
+    </nav>
+    
+    <div class="card">
+      <h1>🏆 排行榜</h1>
+      <p class="subtitle">全国玩家分数排名</p>
+      
+      <div class="your-score">
+        <div class="your-score-label">你的当前分数</div>
+        <div class="your-score-value">12,580</div>
+      </div>
+      
+      <div class="tabs">
+        <button class="tab active">最高分</button>
+        <button class="tab">今日</button>
+        <button class="tab">本周</button>
+      </div>
+      
+      <ul class="leaderboard-list">
+        <li class="leaderboard-item">
+          <div class="rank gold">1</div>
+          <div class="player-info">
+            <div class="player-name">🐔 小鸡王者</div>
+            <div class="player-level">等级 50</div>
+          </div>
+          <div class="player-score">98,750</div>
+        </li>
+        
+        <li class="leaderboard-item">
+          <div class="rank silver">2</div>
+          <div class="player-info">
+            <div class="player-name">🚀 极速小子</div>
+            <div class="player-level">等级 48</div>
+          </div>
+          <div class="player-score">87,320</div>
+        </li>
+        
+        <li class="leaderboard-item">
+          <div class="rank bronze">3</div>
+          <div class="player-info">
+            <div class="player-name">⭐ 明星玩家</div>
+            <div class="player-level">等级 45</div>
+          </div>
+          <div class="player-score">76,890</div>
+        </li>
+        
+        <li class="leaderboard-item">
+          <div class="rank normal">4</div>
+          <div class="player-info">
+            <div class="player-name">🎯 神枪手</div>
+            <div class="player-level">等级 42</div>
+          </div>
+          <div class="player-score">65,420</div>
+        </li>
+        
+        <li class="leaderboard-item">
+          <div class="rank normal">5</div>
+          <div class="player-info">
+            <div class="player-name">💎 钻石选手</div>
+            <div class="player-level">等级 40</div>
+          </div>
+          <div class="player-score">58,100</div>
+        </li>
+        
+        <li class="leaderboard-item">
+          <div class="rank normal">6</div>
+          <div class="player-info">
+            <div class="player-name">🔥 热血青年</div>
+            <div class="player-level">等级 38</div>
+          </div>
+          <div class="player-score">45,670</div>
+        </li>
+        
+        <li class="leaderboard-item">
+          <div class="rank normal">7</div>
+          <div class="player-info">
+            <div class="player-name">🌟 闪亮之星</div>
+            <div class="player-level">等级 35</div>
+          </div>
+          <div class="player-score">32,890</div>
+        </li>
+        
+        <li class="leaderboard-item">
+          <div class="rank normal">8</div>
+          <div class="player-info">
+            <div class="player-name">🏅 运动健将</div>
+            <div class="player-level">等级 32</div>
+          </div>
+          <div class="player-score">28,540</div>
+        </li>
+        
+        <li class="leaderboard-item">
+          <div class="rank normal">9</div>
+          <div class="player-info">
+            <div class="player-name">🎮 游戏达人</div>
+            <div class="player-level">等级 30</div>
+          </div>
+          <div class="player-score">21,320</div>
+        </li>
+        
+        <li class="leaderboard-item">
+          <div class="rank normal">10</div>
+          <div class="player-info">
+            <div class="player-name">🐣 新手小鸡</div>
+            <div class="player-level">等级 28</div>
+          </div>
+          <div class="player-score">18,760</div>
+        </li>
+      </ul>
+      
+      <a href="/" class="play-btn">🎮 立即挑战</a>
+    </div>
+  </div>
+</body>
+</html>
